@@ -5,7 +5,7 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-@import url(../../node_modules/jquery-ui-slider/jquery-ui.min.css);
+@import url(../node_modules/jquery-ui-slider/jquery-ui.min.css);
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -12080,7 +12080,7 @@ header:before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url(../../images/space-environment.png) no-repeat;
+  background: url(../images/space-environment.png) no-repeat;
   background-size: 100%;
 }
 
@@ -12165,7 +12165,7 @@ header:before {
   display: inline-block;
   position: absolute;
   bottom: -10px;
-  background: url(../../images/сloud.png) no-repeat;
+  background: url(../images/сloud.png) no-repeat;
   background-position: center;
   width: 100%;
   height: 100%;
@@ -12284,7 +12284,7 @@ header:before {
 }
 
 .prices .container:before {
-  background-image: url(../../images/white-elips.png);
+  background-image: url(../images/white-elips.png);
   height: 106px;
   width: 100%;
   bottom: -106px;
@@ -12295,7 +12295,7 @@ header:before {
   right: 50%;
   -webkit-transform: translate(50%, -50%);
           transform: translate(50%, -50%);
-  background-image: url(../../images/about/ufo.png);
+  background-image: url(../images/about/ufo.png);
   background-repeat: no-repeat;
   background-size: 100%;
   width: 83px;
@@ -12495,7 +12495,7 @@ header:before {
   right: 0;
   bottom: 0;
   top: 0;
-  background-image: url(../../images/about/cosmos.png);
+  background-image: url(../images/about/cosmos.png);
   background-size: auto;
   background-repeat: no-repeat;
   background-position: center center;
@@ -12517,7 +12517,7 @@ header:before {
 .about-block:before {
   content: '';
   display: inline-block;
-  background-image: url(../../images/about/planet.png);
+  background-image: url(../images/about/planet.png);
   background-repeat: no-repeat;
   background-size: cover;
   width: 170px;
@@ -12561,7 +12561,7 @@ header:before {
 }
 
 .about-item:nth-child(1) p::before, .about-item:nth-child(2) p::before, .about-item:nth-child(3) p::before, .about-item:nth-child(4) p::before, .about-item:nth-child(5) p::before, .about-item:nth-child(6) p::before {
-  background-image: url(../../images/about/creative-cyclop.png);
+  background-image: url(../images/about/creative-cyclop.png);
 }
 
 .about-item:nth-child(1), .about-item:nth-child(3), .about-item:nth-child(5) {
@@ -12593,11 +12593,11 @@ header:before {
 }
 
 .about-item:nth-child(1) p::before {
-  background-image: url(../../images/about/creative-cyclop.png);
+  background-image: url(../images/about/creative-cyclop.png);
 }
 
 .about-item:nth-child(2) p::before {
-  background-image: url(../../images/about/head.png);
+  background-image: url(../images/about/head.png);
 }
 
 .about-item:nth-child(3) {
@@ -12605,7 +12605,7 @@ header:before {
 }
 
 .about-item:nth-child(3) p::before {
-  background-image: url(../../images/about/morty.png);
+  background-image: url(../images/about/morty.png);
 }
 
 .about-item:nth-child(4) {
@@ -12613,15 +12613,15 @@ header:before {
 }
 
 .about-item:nth-child(4) p::before {
-  background-image: url(../../images/about/robot.png);
+  background-image: url(../images/about/robot.png);
 }
 
 .about-item:nth-child(5) p::before {
-  background-image: url(../../images/about/rick.png);
+  background-image: url(../images/about/rick.png);
 }
 
 .about-item:nth-child(6) p::before {
-  background-image: url(../../images/about/cosmonaut.png);
+  background-image: url(../images/about/cosmonaut.png);
 }
 
 @media (max-width: 1200px) {
@@ -12733,7 +12733,7 @@ header:before {
 }
 
 .insta-g .container:before {
-  background-image: url(../../images/violet-elips.png);
+  background-image: url(../images/violet-elips.png);
   height: 125px;
   width: 95%;
   top: 0;
@@ -12744,7 +12744,7 @@ header:before {
   right: 50%;
   -webkit-transform: translate(50%, -50%);
           transform: translate(50%, -50%);
-  background-image: url(../../images/moonRover.png);
+  background-image: url(../images/moonRover.png);
   background-repeat: no-repeat;
   background-size: 100%;
   width: 83px;
