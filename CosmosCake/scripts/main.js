@@ -101,7 +101,30 @@ var cosmosCake = {
     });
   }
 }.init();
-$(document).ready(function () {});
+$(document).ready(function () {
+  // $('.about-item').each('img')
+  var img = $('.about-item>img');
+  img.mouseover(function (e) {
+    var attr = $(this).attr('src');
+    var attrCut = attr.substring(0, attr.length - 4);
+    var hover = '_hover.png';
+    $(this).attr('src', attrCut + hover);
+    console.log(attr.substring(0, attr.length - 3));
+    var txt = [];
+    var text = $(this).siblings('p').text();
+    var massiv = text.split('"', length);
+    console.log(massiv);
+  });
+  img.mouseleave(function (e) {
+    var attr = $(this).attr('src');
+    var attrCut = attr.substring(0, attr.length - 10);
+    var png = '.png';
+    $(this).attr('src', attrCut + png);
+  });
+  var txt = [];
+  $('.about-item p').text();
+  console.log(txt);
+});
 /*
 
 w: 150px;
