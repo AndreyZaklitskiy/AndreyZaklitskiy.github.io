@@ -1081,17 +1081,17 @@ html {
 
 @font-face {
   font-family: 'MuseoSansCyrl-300';
-  src: url("../MuseoSansCyrl-300/MuseoSansCyrl-300.woff") format("woff"), url("../fonts/MuseoSansCyrl-300.woff2") format("woff");
+  src: url("../fonts/MuseoSansCyrl-300.woff") format("woff"), url("../fonts/MuseoSansCyrl-300.woff2") format("woff2");
 }
 
 @font-face {
   font-family: 'MuseoSansCyrl-500';
-  src: url("../MuseoSansCyrl-300/MuseoSansCyrl-500.woff") format("woff"), url("../fonts/MuseoSansCyrl-500.woff2") format("woff");
+  src: url("../fonts/MuseoSansCyrl-500.woff") format("woff"), url("../fonts/MuseoSansCyrl-500.woff2") format("woff2");
 }
 
 @font-face {
   font-family: 'MuseoSansCyrl-700';
-  src: url("../MuseoSansCyrl-300/MuseoSansCyrl-700.woff") format("woff"), url("../fonts/MuseoSansCyrl-700.woff2") format("woff");
+  src: url("../fonts/MuseoSansCyrl-700.woff") format("woff"), url("../fonts/MuseoSansCyrl-700.woff2") format("woff2");
 }
 
 /*
