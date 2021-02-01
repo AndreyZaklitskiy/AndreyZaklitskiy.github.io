@@ -1,5 +1,5 @@
 /*!
- * modernizr v3.8.0
+ * modernizr v3.11.2
  * Build https://modernizr.com/download?-serviceworker-sizes-srcset-supports-touchevents-addtest-atrule-domprefixes-hasevent-load-mq-prefixed-prefixedcss-prefixes-printshiv-setclasses-testallprops-testprop-teststyles-dontmin-cssclassprefix:modernizr-
  *
  * Copyright (c)
@@ -23,7 +23,7 @@
  * of control over the experience.
 */
 
-;(function(window, document, undefined){
+;(function(scriptGlobalObject, window, document, undefined){
 
   var tests = [];
   
@@ -36,7 +36,7 @@
    */
   var ModernizrProto = {
     // The current version, dummy
-    _version: '3.8.0',
+    _version: '3.11.2',
 
     // Any settings that don't work as separate modules
     // can go in here as configuration.
@@ -356,11 +356,11 @@
    * @optionProp addTest
    * @access public
    * @function addTest
-   * @param {string|Object} feature - The string name of the feature detect, or an
+   * @param {string|object} feature - The string name of the feature detect, or an
    * object of feature detect names and test
    * @param {Function|boolean} test - Function returning true if feature is supported,
    * false if not. Otherwise a boolean representing the results of a feature detection
-   * @returns {Object} the Modernizr object to allow chaining
+   * @returns {object} the Modernizr object to allow chaining
    * @example
    *
    * The most common way of creating your own feature detects is by calling
@@ -477,11 +477,11 @@
    *   elem.style.WebkitBorderRadius
    * instead of something like the following (which is technically incorrect):
    *   elem.style.webkitBorderRadius
-
+   *
    * WebKit ghosts their properties in lowercase but Opera & Moz do not.
    * Microsoft uses a lowercase `ms` instead of the correct `Ms` in IE8+
    *   erik.eae.net/archives/2008/03/10/21.48.10/
-
+   *
    * More here: github.com/Modernizr/Modernizr/issues/issue/21
    *
    * @access private
@@ -1346,6 +1346,44 @@
 
   ;
 
+
+  /**
+   * wrapper around getComputedStyle, to fix issues with Firefox returning null when
+   * called inside of a hidden iframe
+   *
+   * @access private
+   * @function computedStyle
+   * @param {HTMLElement|SVGElement} elem - The element we want to find the computed styles of
+   * @param {string|null} [pseudo] - An optional pseudo element selector (e.g. :before), of null if none
+   * @param {string} prop - A CSS property
+   * @returns {CSSStyleDeclaration} the value of the specified CSS property
+   */
+  function computedStyle(elem, pseudo, prop) {
+    var result;
+
+    if ('getComputedStyle' in window) {
+      result = getComputedStyle.call(window, elem, pseudo);
+      var console = window.console;
+
+      if (result !== null) {
+        if (prop) {
+          result = result.getPropertyValue(prop);
+        }
+      } else {
+        if (console) {
+          var method = console.error ? 'error' : 'log';
+          console[method].call(console, 'getComputedStyle returning null, its possible modernizr test results are inaccurate');
+        }
+      }
+    } else {
+      result = !pseudo && elem.currentStyle && elem.currentStyle[prop];
+    }
+
+    return result;
+  }
+
+  ;
+
   /**
    * Modernizr.mq tests a given media query, live against the current state of the window
    * adapted from matchMedia polyfill by Scott Jehl and Paul Irish
@@ -1404,9 +1442,7 @@
       var bool = false;
 
       injectElementWithStyles('@media ' + mq + ' { #modernizr { position: absolute; } }', function(node) {
-        bool = (window.getComputedStyle ?
-          window.getComputedStyle(node, null) :
-          node.currentStyle).position === 'absolute';
+        bool = computedStyle(node, null, 'position') === 'absolute';
       });
 
       return bool;
@@ -1477,51 +1513,13 @@
 
   ;
 
-
-  /**
-   * wrapper around getComputedStyle, to fix issues with Firefox returning null when
-   * called inside of a hidden iframe
-   *
-   * @access private
-   * @function computedStyle
-   * @param {HTMLElement|SVGElement} elem - The element we want to find the computed styles of
-   * @param {string|null} [pseudo] - An optional pseudo element selector (e.g. :before), of null if none
-   * @param {string} prop - A CSS property
-   * @returns {CSSStyleDeclaration} the value of the specified CSS property
-   */
-  function computedStyle(elem, pseudo, prop) {
-    var result;
-
-    if ('getComputedStyle' in window) {
-      result = getComputedStyle.call(window, elem, pseudo);
-      var console = window.console;
-
-      if (result !== null) {
-        if (prop) {
-          result = result.getPropertyValue(prop);
-        }
-      } else {
-        if (console) {
-          var method = console.error ? 'error' : 'log';
-          console[method].call(console, 'getComputedStyle returning null, its possible modernizr test results are inaccurate');
-        }
-      }
-    } else {
-      result = !pseudo && elem.currentStyle && elem.currentStyle[prop];
-    }
-
-    return result;
-  }
-
-  ;
-
   /**
    * nativeTestProps allows for us to use native feature detection functionality if available.
    * some prefixed form, or false, in the case of an unsupported rule
    *
    * @access private
    * @function nativeTestProps
-   * @param {array} props - An array of property names
+   * @param {Array} props - An array of property names
    * @param {string} value - A string representing the value we want to check via @supports
    * @returns {boolean|undefined} A boolean when @supports exists, undefined otherwise
    */
@@ -1672,7 +1670,7 @@
    * @access private
    * @function fnBind
    * @param {Function} fn - a function you want to change `this` reference to
-   * @param {Object} that - the `this` you want to call the function with
+   * @param {object} that - the `this` you want to call the function with
    * @returns {Function} The wrapped version of the supplied function
    */
   function fnBind(fn, that) {
@@ -1690,9 +1688,9 @@
    * @access private
    * @function testDOMProps
    * @param {Array<string>} props - An array of properties to test for
-   * @param {Object} obj - An object or Element you want to use to test the parameters again
-   * @param {boolean|Object} elem - An Element to bind the property lookup again. Use `false` to prevent the check
-   * @returns {false|*} returns false if the prop is unsupported, otherwise the value that is supported
+   * @param {object} obj - An object or Element you want to use to test the parameters again
+   * @param {boolean|object} elem - An Element to bind the property lookup again. Use `false` to prevent the check
+   * @returns {boolean|*} returns `false` if the prop is unsupported, otherwise the value that is supported
    */
   function testDOMProps(props, obj, elem) {
     var item;
@@ -1731,11 +1729,11 @@
    * @access private
    * @function testPropsAll
    * @param {string} prop - A string of the property to test for
-   * @param {string|Object} [prefixed] - An object to check the prefixed properties on. Use a string to skip
+   * @param {string|object} [prefixed] - An object to check the prefixed properties on. Use a string to skip
    * @param {HTMLElement|SVGElement} [elem] - An element used to test the property and value against
    * @param {string} [value] - A string of a css value
    * @param {boolean} [skipValueTest] - An boolean representing if you want to test if value sticks when set
-   * @returns {false|string} returns the string version of the property, or false if it is unsupported
+   * @returns {string|boolean} returns the string version of the property, or `false` if it is unsupported
    */
   function testPropsAll(prop, prefixed, elem, value, skipValueTest) {
 
@@ -1772,9 +1770,9 @@
    * @access public
    * @function prefixed
    * @param {string} prop - String name of the property to test for
-   * @param {Object} [obj] - An object to test for the prefixed properties on
+   * @param {object} [obj] - An object to test for the prefixed properties on
    * @param {HTMLElement} [elem] - An element used to test specific properties against
-   * @returns {string|false} The string representing the (possibly prefixed) valid
+   * @returns {string|boolean} The string representing the (possibly prefixed) valid
    * version of the property, or `false` when it is unsupported.
    * @example
    *
@@ -1896,7 +1894,7 @@
    * @access public
    * @function prefixedCSS
    * @param {string} prop - String name of the property to test for
-   * @returns {string|false} The string representing the (possibly prefixed)
+   * @returns {string|boolean} The string representing the (possibly prefixed)
    * valid version of the property, or `false` when it is unsupported.
    * @example
    *
@@ -1931,7 +1929,7 @@
    * @param {string} prop - String naming the property to test (either camelCase or kebab-case)
    * @param {string} [value] - String of the value to test
    * @param {boolean} [skipValueTest=false] - Whether to skip testing that the value is supported when using non-native detection
-   * @returns {false|string} returns the string version of the property, or false if it is unsupported
+   * @returns {string|boolean} returns the string version of the property, or `false` if it is unsupported
    * @example
    *
    * testAllProps determines whether a given CSS property, in some prefixed form,
@@ -2013,7 +2011,7 @@
    * @access public
    * @function testStyles
    * @param {string} rule - String representing a css rule
-   * @param {function} callback - A function that is used to test the injected element
+   * @param {Function} callback - A function that is used to test the injected element
    * @param {number} [nodes] - An integer representing the number of additional nodes you want injected
    * @param {string[]} [testnames] - An array of strings that are used as ids for the additional nodes
    * @returns {boolean}
@@ -2070,10 +2068,10 @@
   "notes": [{
     "name": "W3C Spec (The @supports rule)",
     "href": "https://dev.w3.org/csswg/css3-conditional/#at-supports"
-  },{
+  }, {
     "name": "Related Github Issue",
     "href": "https://github.com/Modernizr/Modernizr/issues/648"
-  },{
+  }, {
     "name": "W3C Spec (The CSSSupportsRule interface)",
     "href": "https://dev.w3.org/csswg/css3-conditional/#the-csssupportsrule-interface"
   }]
@@ -2094,10 +2092,10 @@
   "notes": [{
     "name": "WHATWG Spec",
     "href": "https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element"
-    },{
+  }, {
     "name": "Srcset and sizes",
     "href": "https://ericportis.com/posts/2014/srcset-sizes/"
-    }]
+  }]
 }
 !*/
 /* DOC
@@ -2139,7 +2137,7 @@ Test for the `sizes` attribute on images
   "notes": [{
     "name": "Smashing Magazine Article",
     "href": "https://www.smashingmagazine.com/2013/08/webkit-implements-srcset-and-why-its-a-good-thing/"
-  },{
+  }, {
     "name": "Generate multi-resolution images for srcset with Grunt",
     "href": "https://addyosmani.com/blog/generate-multi-resolution-images-for-srcset-with-grunt/"
   }]
@@ -2155,6 +2153,7 @@ Test for the srcset attribute of images
 {
   "name": "ServiceWorker API",
   "property": "serviceworker",
+  "caniuse": "serviceworkers",
   "notes": [{
     "name": "ServiceWorkers Explained",
     "href": "https://github.com/slightlyoff/ServiceWorker/blob/master/explainer.md"
@@ -2233,9 +2232,9 @@ This test will also return `true` for Firefox 4 Multitouch support.
   }
 
   // Leak Modernizr namespace
-  window.Modernizr = Modernizr;
+  scriptGlobalObject.Modernizr = Modernizr;
 
 
 ;
 
-})(window, document);
+})(window, window, document);
