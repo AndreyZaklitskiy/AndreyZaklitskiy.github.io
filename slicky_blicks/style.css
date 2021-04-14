@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.sec {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+}
+.sec-1 {
+    background-color: #9ede73;
+    
+}
+.sec-2 {
+    background-color: #f7ea00;
+}
+.sec-3 {
+    background-color: #e48900;
+}
+.sec-4 {
+    background-color: #be0000;
+}
+.sec-5 {
+    background-color: #864000;
+}
+.sticky-block {
+    top: 20px;
+    height: 200px;
+    width: 200px;
+    border: 2px solid #301b3f;
+    /* position: sticky; */
+    background-color: #e4fbff;
+    z-index: 2;
+}
+.sticky-block-2 {
+    height: 220px; 
+}
+.sticky {
+    position: fixed;
+}
+
