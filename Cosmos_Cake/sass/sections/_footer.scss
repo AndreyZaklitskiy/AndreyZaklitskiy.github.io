@@ -1,0 +1,696 @@
+footer {
+  position: relative;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  .container {
+    padding-bottom: 80px;
+  }
+  &::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    bottom: -20px;
+    background: url(../images/footer-clouds.png) no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    max-height: 240px;
+    z-index: 0;
+  }
+}
+/*--------------------- INNER ---------------*/
+// footer
+.footer__inner {
+      @include make-col-ready();
+    @include media-breakpoint-up(lg) {
+      @include make-col(11);
+    }
+    @include media-breakpoint-down(md) {
+      @include make-col(12);
+    }
+  box-shadow: 0px 7px 16px 0px rgba(1, 1, 1, 0.43);
+  margin-top: -80px;
+}
+/*---------- -----FOOTER PAGINATION-   ---------*/
+.footer-paginartion {
+  padding: 25px 20px 22px;
+  display: flex;
+  justify-content: space-between;
+}
+/*---------- ------------------------- ---------*/
+// header H2
+.footer-paginartion__header {
+  display: inline-block;
+  font-family: $robotomedium;
+  color: $black;
+  font-weight: 300;
+  line-height: 35px;
+}
+/*---------- ----- PAGINATION "LI" -   ---------*/
+//список форм
+.footer-pagination__list {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+.footer-paginartion__item {
+  display: block;
+  margin-right: 35px;
+  a {
+    display: block;
+    text-align: center;
+    font-family: $robotoregular;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 6px 23px;
+    color: #544759;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    &:hover {
+      border: 2px solid #fd7dd7;
+    }
+  }
+}
+.footer-paginartion__item_active {
+  display: block;
+  a {
+    border: 2px solid #fd7dd7;
+  }
+}
+// pagination buttons
+.footer-paginartion__btn {
+  display: none;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  align-items: center;
+  z-index: 5;
+  i {
+    font-size: 16px;
+    color: #544759;
+    transition: all .5s;
+  }
+  &:hover, &:active {
+    i {
+      font-size: 22px;
+    }
+  }
+}
+.footer-paginartion__btn_prev {
+  left: 0;
+}
+.footer-paginartion__btn_next {
+  right: 0;
+}
+/*---------- -----           -   ---------*/
+
+/*---------- обёртка для всех форм футера ---------*/
+.footer__forms {
+  padding: 35px 15px 30px;
+}
+/*---------- -------------------- ---------*/
+/*---------- общие стили форм футера ---------*/
+.footerForm {
+  display: none;
+  position: relative;
+  grid-template-columns: 370px 325px 1fr; //repeat(3, 1fr)
+  grid-gap: 15px;
+}
+.footerForm.open {
+  display: grid;
+}
+//заглавия в формах
+.footerForm__header {
+  padding-bottom: 12px;
+}
+/*---------- -------------------- ---------*/
+/*---------- ЛЕВАЯ КОЛОНКА ---------*/
+.footerForm__inner_left {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  grid-column-gap: 30px;
+  grid-row-gap: 20px;
+}
+// РЕЙНДЖ СЛАЙДЕР
+.footerForm__amount {
+  .input-text, .input-range {
+    width: 100%;
+  }
+    .input-text {
+      text-align: right;
+      margin-bottom: 15px;
+    }
+    // стилизация ползунка input type="range"
+    .input-range {
+      -webkit-appearance: none; /* Скрывает слайдер, чтобы можно было создать свой */
+      width: 100%; /* Указание параметра ширины требуется для Firefox. */
+      // height: 7px;
+      background-color: transparent;
+    }
+    /* Специальные правила для браузеров на движках WebKit/Blink */
+    .input-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 23px;
+      height: 23px;
+      background-color: #fff;
+      box-shadow: 0px 3px 6px 0px rgba(1, 1, 1, 0.43);
+      border-radius: 50%;
+      margin-top: -8px;
+    }
+    .input-range:focus {
+      outline: none; /* Убирает голубую границу у элемента. Хотя, возможно, и стоит создавать некоторое оформления для состояния фокуса в целях обеспечения доступности. */
+    }
+    .input-range::-ms-track {
+      width: 100%;
+      cursor: pointer;
+      background: transparent; /* Скрывает слайдер, чтобы можно было добавить собственные стили. */
+      border-color: transparent;
+      color: transparent;
+    }
+    /* Тоже самое для Firefox */
+    .input-range::-moz-range-thumb {
+      width: 23px;
+      height: 23px;
+      background-color: #fff;
+      box-shadow: 0px 3px 6px 0px rgba(1, 1, 1, 0.43);
+      border-radius: 50%;
+      cursor: pointer;
+      outline: none;
+      border: none;
+    }
+    .input-range::-moz-range-track {
+      width: 100%;
+      height: 7px;
+      cursor: pointer;
+      border-radius: 2px;
+      background-color: rgb(253, 125, 215);
+      box-shadow: inset 0px 2px 4px 0px rgba(1, 1, 1, 0.39);
+    }
+    /* Тоже самое для IE */
+    .input-range::-ms-thumb {
+      width: 23px;
+      height: 23px;
+      background-color: #fff;
+      box-shadow: 0px 3px 6px 0px rgba(1, 1, 1, 0.43);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .input-range::-ms-track {
+      width: 100%;
+      height: 7px;
+      cursor: pointer;
+      background: transparent;
+      border-color: transparent;
+      border-width: 16px 0;
+      color: transparent;
+    }
+    .input-range::-ms-fill-lower {
+      background-color: rgb(253, 125, 215);
+      border-radius: 2px;
+      box-shadow: inset 0px 2px 4px 0px rgba(1, 1, 1, 0.39);
+    }
+    .input-range:focus::-ms-fill-lower {
+      background-color: rgb(253, 125, 215);
+    }
+    .input-range::-ms-fill-upper {
+      background-color: rgb(253, 125, 215);
+      border-radius: 2px;
+      box-shadow: inset 0px 2px 4px 0px rgba(1, 1, 1, 0.39);
+    }
+    .input-range:focus::-ms-fill-upper {
+      background-color: rgb(253, 125, 215);
+    }
+    .input-range::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 7px;
+      cursor: pointer;
+      border-radius: 2px;
+      background-color: rgb(253, 125, 215);
+      box-shadow: inset 0px 2px 4px 0px rgba(1, 1, 1, 0.39);
+    }
+    .input-range:focus::-webkit-slider-runnable-track {
+      background-color: rgb(253, 125, 215);
+    }
+}
+/*--------стилизация чекбоксов-----*/
+.footerForm__check-box {
+  position: relative;
+  padding: 4px 0;
+  display: flex;
+  align-items: center;
+  width: auto;
+}
+// стилизация input type radio
+.radioButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  height: 22px;
+  width: 22px;
+  letter-spacing: 0;
+  font-family: $robotolight;
+  font-size: 14px;
+  display: inline-block;
+  color: #ffffff;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+  box-shadow: inset 4px 2px 4px rgba(1, 1, 1, 0.43);
+  background-color: rgba(255, 255, 255, 1);
+  transition: background-color 1s;
+  span {
+    padding-left: 30px;
+    white-space: pre;
+    cursor: pointer;
+  }
+}
+.radioInput {
+  display: none;
+}
+.radioInput:checked + .radioButton{
+  background-color: $purple;
+}
+/*----------TEXTAREA----------*/
+.footerForm__addInfo {
+  width: 100%;
+  margin-bottom: 20px;
+  grid-column: 1 / -1;
+}
+.footerForm__textarea {
+  width: 100%;
+  min-height: 100px;
+  height: 100%;
+  margin-bottom: 20px;
+  resize: none;
+}
+/*-----------add-img-----------*/
+.footerForm__addImage {
+  margin-top: 40px;
+  grid-column: 1 / -1;
+}
+.addImage__btn {
+  padding: 10px 48px;
+  background-color: $purple;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-family: $robotoregular;
+  border: none;
+  box-shadow: 0px 6px 5.76px 0.24px rgba(1, 1, 1, 0.16);
+  transition: 0.5s;
+  &:hover {
+    background: #92a2f0;
+  }
+}
+.addImage__btn_find {
+  margin: 0 17px 10px 0;
+}
+.addImage__btn_load {
+ position: relative;
+ display: inline-block;
+}
+.addImage__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  font-size: 0;
+  cursor: pointer;
+  transition: 0.5s;
+  &:hover + .addImage__lable {
+    background: #92a2f0;
+  }
+}
+//  FIREFOX bugfix
+.addImage__input:focus + .addImage__lable,
+.addImage__input.has-focus + .addImage__lable {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+.footerForm__transcription {
+  font-family: $robotomedium;
+  font-size: 14px;
+  color: $white;
+  margin-bottom: 10px;
+}
+.footerForm-center__list {
+  &_dough {
+    margin-bottom: 30px;
+  }
+}
+.footerForm__inner_center {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.footerForm-center__wrap {
+  display: flex;
+  flex-direction: column;
+}
+.footerForm-center__list {
+  margin-bottom: 20px;
+}
+
+.footerForm__input, textarea {
+  border-radius: 4px;
+  border: none;
+  background-color: rgb(255, 255, 255);
+  opacity: 0.4;
+  box-shadow: inset 4px 3px 5px 0px rgba(1, 1, 1, 0.67);
+  height: 30px;
+  padding: 5px;
+  color: #544759;
+}
+
+.registration__delivery {
+  .footerForm__check-box {
+    display: inline-block;
+    min-width: 115px;
+  }
+}
+// кнопка заказа
+.footerForm__submit {
+  position: absolute;
+  right: 20px;
+  bottom: -60px;
+  padding: 20px 60px;
+  font-size: 18px;
+  font-family: $robotoregular;
+  color: #fff;
+  text-transform: uppercase;
+  background-color: $purple;
+  box-shadow: 10px 6px 18px 0px rgba(1, 1, 1, .75);
+  border: none;
+  border-radius: 4px;
+  &:hover {
+    background-color: #92a2f0;
+    box-shadow: 10px 6px 18px 0px rgba(1, 1, 1, .75);
+  }
+}
+
+
+.footerForm__inner_right {
+  display: flex;
+  flex-direction: column;
+  .footerForm__input {
+    margin-bottom: 28px;
+  }
+  
+}
+.registration__inner {
+  position: relative;
+}
+
+._individual {
+  grid-template-columns: 3fr 1fr 1.4fr;
+  .footerForm__inner_left {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}
+
+.footer__phone {
+  display: flex;
+  justify-content: center;
+  padding: 34px 0 30px;
+  width: 100%;
+  box-shadow: 5px 5px 13px 0px rgba(#010101, .22);
+  margin-bottom: 55px;
+  position: relative;
+  z-index: 2;
+  a {
+    font-family: $robotobold;
+    font-size: 42px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+  }
+}
+
+footer .footer__bottom {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding-bottom: 16px;
+  z-index: 2;
+}
+.footer__studio {
+  h5 {
+    display: inline-block;
+    font-family: $robotobold;
+    font-size: 14px;
+    font-weight: bold;
+    color: #6e5b8f;
+    text-transform: uppercase;
+    margin-right: 30px;
+  }
+  p {
+    display: inline-block;
+    font-family: $robotoregular;
+    font-size: 14px;
+    color: #6e5b8f;
+  }
+
+}
+.footer__rights {
+  p {
+    font-family: $robotoregular;
+    font-size: 14px;
+    color: #6e5b8f;
+    text-transform: capitalize;
+  }
+}
+
+.radioInput.errField~.radioButton {
+  background-color: rgba(#dc3545, .22);
+  border-color: rgba(#dc3545, .82);
+}
+.just-validate-error-field {
+// box-shadow: 5px 5px 13px 0px rgba(#010101, .22);
+  border: 2px red solid;
+  background-color: rgba(red, .22);
+}
+.just-validate-error-label{
+  position: absolute;
+  transform: scale(0);
+  font-size: 0;
+}
+.just-validate-success-label {
+  position: absolute;
+  transform: scale(0);
+  font-size: 0;
+}
+
+.footerForm {
+  &::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(51, 51, 51, 0.9) url(../../images/loading_icon.gif) center/ 50px no-repeat;
+    transform: scale(2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease 0s;
+    z-index: 999999;
+  }
+}
+.footerForm._sending {
+  &::after {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+
+
+// media
+@media(max-width: 1200px) {
+  footer {
+    .contacts {
+      display: none;
+    }
+  }
+  .footer-paginartion__item {
+    margin-right: 15px;
+}
+  .footerForm {
+    grid-template-columns: auto 300px 1fr;
+  }
+  ._individual {
+    grid-template-columns: 3fr 1fr 1.4fr;
+    .footerForm__inner_left {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+  }
+  .footerForm__inner_left {
+    grid-column-gap: 10px;
+  }
+}
+
+@media(max-width: 992px) {
+  footer {
+    .contacts {
+      display: none;
+    }
+  }
+  /*------------PAGINATION 992--------------*/
+  .footer-pagination__wrapper {
+    position: relative;
+    display: flex;align-items: center;justify-content: center;
+    width: 300px;
+  }
+  .footer-paginartion__item {
+    margin-right: 0;
+    display: none;
+  }
+  .footer-paginartion__item_active {
+    display: block;
+  }
+  .footer-paginartion__btn {
+    display: flex;
+  }
+  /*----------------------------------------*/
+
+  ._individual {
+    grid-template-columns: auto 300px 1fr;
+  }
+  .footerForm__inner_left {
+    grid-template-columns: 1fr;
+    grid-column-gap: 30px;
+  }
+  .addImage__btn {
+    width: 100%;
+  }
+  .footerForm {
+    grid-template-columns: 1fr;
+    .footerForm__inner_left {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .footerForm__addImage {
+    button {
+      width: auto;
+    }
+  }
+  // -------------
+  .footerForm._individual {
+    grid-template-columns: 1fr 1fr;
+    .footerForm__inner_left {
+      grid-column: 1/-1;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+  }
+  .footerForm__addImage {
+    button {
+      width: auto;
+    }
+  }
+  .footerForm__inner_right {
+    margin-bottom: 15px;
+    input {
+      min-width: 100%;
+    }
+    .footerForm__check-box {
+      display: flex;
+    }
+  }
+}
+
+@media(max-width: 768px) {
+  //стили для слайдера кнопок
+  .footer__inner {
+    margin-top: -105px;
+  }
+  .footer-paginartion {
+    padding: 10px 0 22px;
+    flex-direction: column;
+    align-items: center;
+  }
+  // 
+  .footer-paginartion__header {
+    margin-bottom: 10px;
+  }
+  .footerForm {
+    grid-template-columns: 1fr;
+  }
+
+
+  // ----------------
+  .footerForm._individual {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footerForm__inner_left {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  .footerForm__amount {
+    width: auto;
+  }
+  .footerForm__addImage {
+    button {
+      width: auto;
+    }
+  }
+
+}
+
+@media (max-width: 480px) {
+  .footer-paginartion {
+    flex-direction: column;
+  }
+  .footerForm._individual {
+    grid-template-columns: 1fr;
+
+  }
+}
+
+@media (max-width: 380px) {
+  .footer-paginartion__btn_prev {
+    left: 15px;
+  }
+  .footer-paginartion__btn_next {
+    right: 15px;
+  }
+  .footerForm .footerForm__inner_left {
+    grid-template-columns: 1fr;
+  }
+  .footerForm__addImage {
+    button {
+      width: 100%;
+    }
+    .addImage__btn_load {
+      width: 100%;
+    }
+    .addImage__btn {
+      width: 100%;
+      display: block;
+      text-align: center;
+  }
+  }
+
+
+
+  .footer__phone {
+    padding: 20px 0 20px;
+    a {
+      font-size: 27px;
+    }
+  }
+  .footer__studio {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+}
