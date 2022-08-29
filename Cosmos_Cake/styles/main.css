@@ -10921,6 +10921,28 @@ textarea {
   left: 5%;
 }
 
+.preloader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: url(../images/header-grad-bg.jpg) center no-repeat;
+  background-size: cover;
+  z-index: 10000000000000002000000;
+}
+
+.preloader img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.preloader.dn {
+  display: none;
+}
+
 .head-wrap {
   position: relative;
 }
@@ -15619,6 +15641,18 @@ footer .footer__bottom {
   footer .contacts {
     display: none;
   }
+
+  .footer-paginartion__item {
+    margin-right: 15px;
+  }
+
+  .footerForm {
+    grid-template-columns: auto 300px 1fr;
+  }
+
+  .footerForm__inner_left {
+    grid-column-gap: 10px;
+  }
 }
 
 @media (max-width: 992px) {
@@ -15756,12 +15790,8 @@ footer .footer__bottom {
 
   /*----------------------------------------*/
 
-  .footerForm {
-    grid-template-columns: auto 300px 1fr;
-  }
-
   .footerForm__inner_left {
-    grid-template-columns: 1fr;
+    grid-column-gap: 30px;
   }
 
   .addImage__btn {
@@ -15848,7 +15878,7 @@ footer .footer__bottom {
   }
 
   .about-item {
-    margin: 25px 0;
+    margin: 0 0;
     width: 100%;
   }
 
