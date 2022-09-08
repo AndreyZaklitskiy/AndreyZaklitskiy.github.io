@@ -15650,6 +15650,14 @@ footer .footer__bottom {
     grid-template-columns: auto 300px 1fr;
   }
 
+  ._individual {
+    grid-template-columns: 3fr 1fr 1.4fr;
+  }
+
+  ._individual .footerForm__inner_left {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+
   .footerForm__inner_left {
     grid-column-gap: 10px;
   }
@@ -15790,7 +15798,12 @@ footer .footer__bottom {
 
   /*----------------------------------------*/
 
+  ._individual {
+    grid-template-columns: auto 300px 1fr;
+  }
+
   .footerForm__inner_left {
+    grid-template-columns: 1fr;
     grid-column-gap: 30px;
   }
 
