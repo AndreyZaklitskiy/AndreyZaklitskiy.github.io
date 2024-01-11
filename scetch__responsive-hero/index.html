@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Gulp Starter</title>
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/main.min.css">
+</head>
+<body>
+
+<!--<header class="header">-->
+<!--  <div class="header__container">-->
+
+<!--    <div class="header__menu menu">-->
+<!--      <button type='button' class="menu__icon icon-menu"><span></span></button>-->
+<!--      <nav class="menu__body">-->
+<!--        <ul class="menu__list">-->
+<!--          <li class="menu__item"></li>-->
+<!--        </ul>-->
+<!--      </nav>-->
+<!--    </div>-->
+                    <!-- + -->
+<!--<div class="header__logo"><img src="" alt="logo"></div>-->
+<!--<div class="header__action action-header">-->
+<!--  <a href="#" class="action-header__link">Log in</a>-->
+<!--  <a href="#" class="action-header__link">Register</a>-->
+<!--  <button class="action-header__button button button&#45;&#45;border">Contact</button>-->
+<!--</div>-->
+
+<!--  </div>-->
+<!--</header>-->
+
+    <header class="section-header">
+        <div class="navBar-dropdown">
+            <button class="header-hamburger"><span class="hamburger-inner"></span></button>
+            <ul class="header-list">
+                <li class="header-list__item"><a href="#" class="header-list__link">Location</a></li>
+                <li class="header-list__item"><a href="#" class="header-list__link">Location</a></li>
+                <li class="header-list__item"><a href="#" class="header-list__link">Location</a></li>
+                <li class="header-list__item"><a href="#" class="header-list__link">Location</a></li>
+            </ul>
+        </div>
+        <div class="container">
+            <nav class="header-navBar">
+                <!--
+                    Как правильнее было бы сделать тут структуру?
+                    Может правильнее было бы сделать [header-navBar] дивом, а каждый ul обернуть в nav.header-navBar__wrapper?
+                    В чем ошибка именования классов?
+                    Какие возможно есть проблемы со структурой?
+                    etc
+                -->
+                <ul class="header-list">
+                    <li class="header-list__item_btn-search">
+                        <button class="header-navBar__btn header-search-btn">
+                            <img class="header-search-btn__img" src="./images/search-icon.png" alt="search">
+                        </button>
+                    </li>
+                    <li class="header-list__item"><a href="#" class="header-list__link">Location</a></li>
+                    <li class="header-list__item"><a href="#" class="header-list__link">About us</a></li>
+                    <li class="header-list__item_header">
+                        <a href="#" class="header-logo">
+                            <img class="header-logo__image" src="./images/logo.png" alt="LOGO">
+                        </a>
+                    </li>
+                    <li class="header-list__item"><a href="#" class="header-list__link">Contact</a></li>
+                    <li class="header-list__item"><a href="#" class="header-list__link">Home</a></li>
+                    <li class="header-list__item_btn">
+                        <button class="header-hamburger"><span class="hamburger-inner"></span></button>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-content">
+                <div class="main-title__wrapper">
+                    <h1 class="main-title">Fitness gym center</h1>
+                </div>
+                <div class="header-content__columns">
+                    <div class="header-content__column header-content__column_left">
+                        <div class="header-content__image">
+                            <img class="" src="./images/crosses.png" alt="img">
+                        </div>
+                        <h2 class="h2 header-content__title">Do you want to get fit ?</h2>
+                        <p class="header-content__text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae, recusandae ut.</p>
+                        <a href="#" class="btn header-content__link-btn">Read more</a>
+                    </div>
+                    <div class="header-content__column header-content__column_right">
+                        <div class="header-content__image">
+                            <img class="" src="./images/arrows.png" alt="img">
+                        </div>
+                        <h2 class="h2 header-content__title">Start training today</h2>
+                        <p class="header-content__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt, repellendus! Quisquam.</p>
+                        <a href="#" class="btn header-content__link-btn">Join now</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
