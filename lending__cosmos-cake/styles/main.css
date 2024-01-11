@@ -14149,7 +14149,7 @@ button {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url(../../images/hero-section/space-environment.webp) repeat;
+  background: url(../images/hero-section/space-environment.webp) repeat;
   background-size: contain;
   animation: flicker 2s infinite linear;
   z-index: -1;
