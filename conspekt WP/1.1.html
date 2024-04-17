@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conspect WP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Конспект WordPress</h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="post">
+                <h2 class="post__title">Для чего нужен WordPress</h2>
+                <h2>Введение</h2>
+                <p class="post__content">
+                    WordPress - CMS для создания блога но при помощи различных доп. инструментов 
+                    с его помощью можно создавать различные сайты любой сложности.
+                </p>
+                <p class="post__content">
+                    Существует много CMS некоторые из них: OpenCart, Joomla, modX. Tilda...
+                </p>
+                <p class="post__content post-content">
+                    CMS в частности WordPress созданы для :<br>
+                    - наполнение сайта<br>
+                    - Ограничение доступа к админке<br>
+                    - Формирование URL (путей в админке, это важно как минимум для SEO)<br>
+                        <span class="post-content__accent">(В WordPress в Настройки => Постоянные ссылки)</span><br>
+                    - Оптимизация графики.<br>
+                        <span class="post-content__accent">(WordPress сам нарезает картинки на 3 варианта отображения и сортирует их по дате добавления + плагины)</span><br>
+                    - ...
+                </p>
+                <p class="post__content post__content_dalee">Записи, Таксономии, Страницы, Сайдбары, а так же Меню</p>
+                <img src="images/zapisi.png" alt="">
+                <img src="images/taksonomii.png" alt="">
+                <img src="images/page.png" alt="">
+                <img src="images/vigets.png" alt="">
+                <img src="images/textt_1.png" alt="">
+            </div>
+            <div class="post">
+                <h2>Внутренее устройство WordPress</h2>
+                <p class="post__content">
+                    Процесс загрузки WordPress, Понятие хуков, Работа с хуками, Документация WordPress.
+                </p>
+
+                <p class="post__content">
+                    WordPress написан на PHP.<br>
+                    Что-бы запустить нужен Сервер, PHP интерпретатор, БД.<br>
+                    Файлы WordPress ничего не исполняют пока не придет запрос на сервер.<br>
+                    Когда приходит запрос то начинает исполняться какой-то из скриптов. По умолчанию это index.php
+
+                </p>
+                
+                <h3>Хуки</h3>
+                <p class="post__content">
+                    Суть хуков заключается в том что система делится на части, у каждой части есть своё название и есть определенные 
+                    функции которые по цепочке запускаются и строят эту часть системы. 
+                    И вот строятся одна за другой части системы.
+                    На пример.
+                    Одна часть занимается регистрацией типов записей, таксономий.
+                    Другая часть занимается регистрацией виджетов, созданием виджетов.
+                    Какая-то часть занимается выводом информации: выводом меню, выводом контента шаблонов и т.д.<br>
+                    Знать это нужно для того что-бы если нужно внедрить что-то своё то нужно знать в какой момент WordPress 
+                    Строит ту или иную свою часть, подписаться на этот момент времени и передать какую-то свою ф-ию.
+                </p>
+                <img src="images/schema_1.png" alt="">
+                <img src="images/schema_2.png" alt="">
+                <p class="post__content">
+                    По сути в ВП если мы хотим добавить что-то своё то нужно знать хуки ВП и в нужный хук передать свою функцию 
+                    внутри которой будут переданы те ф-ии которые есть в ВП.<br>
+                </p>
+                <a href="https://developer.wordpress.org/">Оффициальная документация ВП</a><br>
+                <a href="https://wp-kama.com/">wp-kama.com</a><br>
+                <a href="https://wp-kama.ru/">wp-kama.ru</a><br>
+
+                <p class="post__content">
+                    Порядок выполнения хуков, какие хуки есть - это всё есть на любом из сайтов выше.
+                </p>
+                <p class="post__content">
+                    Работает так что в тех местах где нужно в шаблоне вставляются ф-ии php.
+                    Интересно то что на те моменты когда уже выводится контент можно подписаться тоже.
+                    Но тогда уже работают не do_action, работают фильтры. Фильтры это тоже разновидность хуков.(add_filter)
+                    Фильтр - это тоже цепочка ф-ий которые запускаются одна за одной. При этом ф-ия должна принимать какой-то параметр
+                    и что-то возвращать.
+                    Это может быть полезно когда надо модифицировать в-ку которую выводит ВП.
+                    Можно получить ту вёрстку которую вставляет ВП и видоизменить её на ту которую нам надо.
+                </p>
+            </div>
+
+
+            <div class="post">
+                <h2>Установка WordPress</h2>
+                <p class="post__content">
+                    Есть 2 способа установки WordPress. Классический и более профессиональный с использованием Composer'а.
+                </p>
+                <p class="post__content">
+                    Как уже было сказано для работы ВП нужно 3 вещи: ВП, сервер, БД.
+                </p>
+                <h3>Классический метод установки WordPress</h3>
+                <p class="post__content">
+                    Для запуска на локалке: Опен сервер. В папке доменов добавить домен. В настройках создать УРЛ той папки.<br>
+                    Скачать и закинуть в папку домена ВП.
+                    Настроить актуальную версию ПХП в Опенсервере после чего появится пхпМайАдмин в ОпенСервере. Создать БД.<br>
+                    Перейти по УРЛу и следовать инструкциям.<br>
+                    В БД по умолчанию пользователь - root, пароль - пустой.<br>
+                    Имя пользователя очень проблематично поменять так что лучше его сразу задать нужным.<br>
+                    email - через него восстанавливается пароль.
+                </p>
+                <h3>профессиональный метод установки WordPress</h3>
+                <p class="post__content">
+                    Через 
+                    <a href="https://getcomposer.org/">Composer</a>
+                </p>
+                <p class="post__content">
+                    <a href="https://getcomposer.org/">Composer</a> - это пакетный менеджер для приложений на php.
+                    Похоже на <a href="https://www.npmjs.com/">npm</a>.
+                </p>
+                <img src="images/Composer_1.png" alt="">
+                <p class="post__content">
+                    Сохраняет зависимости в Composer.json, устанавливает зависимости (тот же WordPress) в одну строчку.<br>
+                    Потом кто-то другой что-бы развернуть этот проект ему будет достаточно 1 файла Composer.json вместо того что-бы искать все зависимости проекта.<br>
+                    Так же можно создать шаблон для себя что-бы использовать его потом в других проектах. 
+                </p>
+                <p class="post__content">
+                    После установки <a href="https://getcomposer.org/">Composer</a>
+                    В нужной директории в консоли нужно вызвать команду сomposer.<br>
+                    После чего нужно создать файл composer.json (по идее он создаться сам либо уже либо после установки 1-й зависимости.) и написать в нем пустые фигурные скобки.<br>
+                    <span class="post-content__accent">composer require wordpress, johnbloch/wordpress</span>
+                </p>
+                <img src="images/OS_settings.png" alt="">
+                <p class="post__content">Создать БД, войти.</p>
+            </div>
+
+
+
+            <div class="post">
+                <h2>Админа WordPress</h2>
+                <img src="images/4.png" alt="">
+            </div>
+
+            <div class="post">
+                <h2>Настройка WordPress</h2>
+                <img src="images/5.png" alt="">
+                <img src="images/settings__написание.png" alt="">
+                <hr>
+                <img src="images/pages_demo.png" alt="">
+                <p class="post__content">
+                    В каждой странице заголовок будет заголовком страницы - 
+                    <span class="post-content__accent">the_title();</span>
+                    , а параграф будет контентом - 
+                    <span class="post-content__accent">the_content();</span><br>
+                    Посты имеют те же самые ф-ии но там немножко по другому оно выводится.
+                    Там уже надо будет перебирать рубрику и перебирать массивы с постами пачками. Предварительно как-то так.
+                </p>
+                <img src="images/settings__чтение.png" alt="">
+                <hr>
+                <img src="images/settings__permalinks.png" alt="">
+                <hr>
+                <h3>плагины</h3>
+                <p class="post__content">
+                     Если устанавливать плагины для себя то нет никаких проболем просто их скачать, но если создавать тему 
+                     то было бы не плохо использовать систему которая автоматически с установкой темы будет подтягивать все нужные для неё плагины.
+                     В этом нам поможет <a href="https://getcomposer.org/">Composer</a>.
+                </p>
+                <p class="post__content">
+                    <a href="https://www.smashingmagazine.com/2019/03/composer-wordpress/">Статья на тему использования композера в связке с wordpress</a><br>
+                    Тут описано всё что нужно по этой теме. По сути просто надо в composer.json указать доп зеркало где можно брать пакеты. Ну и указывать перед скачкой пакета что-то...
+                    После чего достаточно будет в директорию сайта закинуть данный файл и запустить установку композера.
+                </p>
+                <img src="images/wp_repo.png" alt="">
+                <p class="post__content">
+                    Именно этот ключ позволит увидеть композеру какие-то репозитории ("repositories") помимо основного что-бы устанавливать какие-то зависимости. В данном случае передано как-бы зеркало репозитория где хранятся плагины и темы.
+                </p>
+                <img src="images/require.png" alt="">
+                <img src="images/plugin-path.png" alt="">
+                <img style="width: 100%;height: auto;" src="images/comp_req.png" alt="">
+            </div>
+
+            <div class="post">
+                <img src="images/less-6.png" alt="">
+
+            <p class="post__content">
+                Динамику странице придает именно php.<br>
+                На странице всё выводится последовательно, в каждый скрипт ВП проваливается и только закончив его обрабатывать/выводить, он идёт выводить дальнейший html.<br>
+                style.css - глайвный файл в теме.
+            </p>
+            <p class="post__content">
+                Создать тему можно 2 способами: с 0 и унаследовавшись от другой темы.
+            </p>
+            <p class="post__content">
+                Если создавать тему наследуясь от другой темы то достаточно одного файла style.css.<br>
+                Если тема будет самостоятельной то нужен ещё index.php.
+            </p>
+            <img src="images/template_1.png" alt="">
+            <img src="images/template_2.png" alt="">
+
+            <p class="post__content">
+                <span class="post-content__accent">functions.php</span>
+                 - это файл который делает нашу тему и наделяет её возможностями.<br>
+                 При наследовании от другой темы, в отличии от файлов шаблонов которые полностью перезаписывают родительские шаблоны, 
+                 этот файл отрабатывает так же как и родительский аналогичный файл. 
+                 Тоесть по сути мы может разве что дополнить старую тему, но не перезаписать. 
+                 Сначала срабатывает наш functions.php, а за тем из родительской темы<br>
+                 В данном файле мы на пример подписываемся на хуки.
+            </p>
+            <hr>
+            <a href="https://wp-kama.ru/handbook/theme/theme-files-hierarchy">
+                Иерархия шаблонов в WordPress!!!
+            </a>
+            <p class="post__content">
+                С этим рекомендуется ознакомиться.
+            </p>
+            </div>
+
+
+
+            <div class="post">
+                <h2>Создание темы</h2>
+                <img src="images/less_7.png" alt="">
+                <p class="post__content">
+                    Перед началом работы первым делом открываем сайт и админку.
+                    Открыть папку сайта и папку домена открыть в IDE.
+                </p>
+                <p class="post__content">
+                    Далее надо создать папку темы, создать файл 
+                    <span class="post-content__accent">style.css</span>
+                </p>
+                <img src="images/style_css.png" alt="">
+                <p class="post__content">
+                    Далее загрузить скрин сайта в папку сайта (обложка темы).
+                </p>
+                <p class="post__content">
+                    Далее создать папку с произвольным названием но принято её называть 
+                    <span class="post-content__accent">assets</span> 
+                    и закинуть туда вёрстку.
+                </p>
+                <p class="post__content">
+                    Далее создать все необходимые шаблоны:
+                    - Главная страница <br>
+                    <i>
+                        В качестве главной стр. у нас установлена статическая страница (главная).
+                        В таком случае для неё будет создан специальный шаблон. 
+                    </i><br>
+                    - Контакты <br>
+                    <i>
+                        Так же страница статическая так что под неё создадим отдельный шаблон.
+                    </i><br>
+                    - Услуги, расписание, тренеры <br>
+                    <i>
+                        Сделаем с помощью своих типов записей.
+                        На пример для тренеров будет зарегестрирован свой тип записей "тренеры" 
+                        и на странице тренеры будем выводить этот тип записей. И так для каждого типа записи.
+                    </i><br>
+                    <img src="images/archive.png" alt="">
+                    - Страница с блогом <br>
+                    <i>
+                        Дело в том что когда мы выбрали для главной и для блога статическую страницу то 
+                        WordPress автоматически настраивает страницу с последними записями на шаблон 
+                        <span class="post-content__accent">index.php</span>.
+                        Тоесть Блог будет выводиться через 
+                        <span class="post-content__accent">index.php</span>.
+                        Так же мы знаем что 
+                        <span class="post-content__accent">index.php</span> 
+                        - это особенный файл который работает в тех случаях когда не найден подходящий шаблон.
+                        Так что его надо настроить таким образом что-бы он мог выводить как последние записи так и 
+                        любые другие записи с какой-то вёрсткой. Тоесть эту страничку надо будет настроить универсально.
+                        По умолчанию WordPress будет использовать index.php в качестве страницы Блога.
+                    </i><br>
+                    - Страница рубрик<br>
+                    <i>
+                        <span class="post-content__accent">categori.php</span> 
+                        Здесь будут выводиться статьи конкретной рубрики.
+                    </i><br>
+                    - Шаблон для 1-й записи<br>
+                    <i>
+                        <span class="post-content__accent">single.php</span> 
+                    </i><br>
+                </p>
+                <img src="images/page_main_1.png" alt="">
+                <img src="images/page_main_2.png" alt="">
+                <p class="post__content">
+                    То же самое надо сделать для страницы контактов. Для всех страниц которые будут иметь свой 
+                    статический шаблон.
+                </p>
+                <p class="post__content">
+                    В динамеческих же страницах:
+                    <span class="post-content__accent">archive-trainers.php</span> и тд и тп<br>
+                    коментарии не нужны так как WordPress распознает и подключит их по названию.
+                </p>
+                <p class="post__content">
+                    Ещё нужны шаблоны для:
+                    - Страницы категорий - <span class="post-content__accent">category.php</span><br>
+                    - Страницы 1-й статьи - <span class="post-content__accent">single.php</span><br>
+                    <span class="post-content__accent">404.php</span><br>
+                    Короч вот так.
+                </p>
+                <p class="post__content">
+                    Ещё 2 шаблона :
+                    - Хедер - <span class="post-content__accent">header.php</span><br>
+                    - Футер - <span class="post-content__accent">footer.php</span><br>
+                    И файл в котором мы будем создавать функционал нашей темы - <span class="post-content__accent">functions.php</span>
+                </p>
+                <hr>
+                <p class="post__content">
+                    Далее надо начинать нарезать вёрстку что-бы наполнять эти файлы.
+                </p>
+                <p class="post__content">
+                    Начать стоит с header и footer. В них помещаем всё что повторяется от страницы к странице соответственно смыслу.<br>
+                    В данном случае в хедер попало строго хедер, с лого, меню и тд. А в футер попали ещё и модалки. Ну и так же в них соответственно хранится вся вёрстка включая открывающие и закрывающие, 
+                    подключение всего на свете (скрипты, шрифты, стили, мета теги).
+                </p>
+                <img src="images/narezka_1.png" alt="">
+
+                <p class="post__content">
+                    <span class="post-content__accent">index.php</span>
+                    у рас работает не только как страница для записей для блога но и как заглушка для тех страниц для которых 
+                    не нашелся подходящий шаблон. 
+                </p>
+                <img src="images/narezka_2.png" alt="">
+                <p class="post__content">
+                    Если главной установим статическую страницу, а для последних записей установим другую статическую страницу то 
+                    <span class="post-content__accent">is_home();</span> вернет <b>true</b> если мы окажемся на странице блога.
+                    Тоесть когда человек перейдёт на страницу блога то <b>is_home();</b> вернет <b>true</b>.
+                    А в случае с главной - нет.
+                </p>
+                <img src="images/narezka_3.png" alt="">
+                <img src="images/narezka_4.png" alt="">
+                <img src="images/narezka_5.png" alt="">
+
+
+
+            </div>
+
+
+
+            <div class="post">
+                <h2>Настройка темы</h2>
+                <img src="images/less_8.png" alt="">
+    
+                <img src="images/wp_head.png" alt="">
+                <p class="post__content">
+                    На хук wp_head(); ВордПресс подписывает выведение различных тегов которые нужно вставить в тег head.
+                </p>
+                <img src="images/narezka_6.png" alt="">
+                <hr>
+                <img style="width:auto;height:auto;" src="images/bc_1.png" alt="">
+                <img style="width:auto;height:auto;" src="images/bc_2.png" alt="">
+                <p class="post__content">
+                    <a href="https://wp-kama.com/function/body_class"><b>body_class();</b></a>
+                     - добавляет кучу служебных классов в зависимости от того какая это страница, авторизированный пользователь или нет и многое другое.<br>
+                     Полезно в тех случаях если надо изменить вёрстку в разных случаях (для авторизированных пользователей на пример.)
+                     Или для какой-то отдельной страницы написать свои специфические стили.
+                </p>
+                <hr>
+                <img style="width:auto;height:auto;" src="images/narezka_7.png" alt="">
+                <p class="post__content">
+                    Так же на эту функцию WordPress вешает вывод плашки (админ бара) если вы админ сайта.<br>
+                    <b>wp_footer();</b>, <b>wp_head();</b> - функции которые обязательно должны присутствовать в теме.
+                    Вызываются перед закрывающим тегом body и head соответственно.
+                </p>
+                <hr>
+                <img style="width:auto;height:auto;" src="images/narezka_8.png" alt="">
+                <p class="post__content">Оптимизируем эту историю</p>
+                <img style="width:auto;height:auto;" src="images/CF_1.png" alt="">
+                <img style="width:auto;height:auto;" src="images/CF_2.png" alt="">
+                <p class="post__content">
+                    Зачем-то повыводили картинки вот так инлайново. Видимо они не будут меняться из админки.
+                </p>
+            </div>
+
+
+
+            <div class="post">
+                <h2>Расширение возможностей темы</h2>
+                <img src="images/less-9.png" alt="">
+                <img src="images/9.1.png" alt="">
+                <img src="images/9.2.png" alt="">
+                <img src="images/9.3.png" alt="">
+                <img style="width:auto;height:auto;" src="images/9.4.png" alt="">
+            </div>
+
+            <div class="post">
+                <h2>Подключение стилей и JS</h2>
+                <img src="images/10.1.png" alt="">
+                <img src="images/10.2.png" alt="">
+            </div>
+
+            <div class="post">
+                <h2>Вывод меню со своей разметкой</h2>
+                <p class="post__content">
+                    Предыдущий способ более предпочтительный т.к. учитывает гораздо больше моментов.
+                    Однако данный способ полезен когда нам нужен максимальный контроль над вёрсткой для меню. 
+                </p>
+                <p class="post__content">
+                    Смысл в том что мы получим данные меню в админке функциями ворпресса и выведем их пробегаясь 
+                    по массиву той вёрсткой которая нас устроит.
+                </p>
+                <img style="width:auto;height:auto;" src="images/13.0.png" alt="">
+                <img style="width:auto;height:auto;" src="images/13.1.png" alt="">
+                <img style="width:auto;height:auto;" src="images/13.2.png" alt="">
+            </div>
+
+
+            https://bezpeka-veritas.com/
+            https://daddysmoke.com.ua/
+            https://ia.in.ua/
+            https://vozugerhouse.com.ua/
+
+
+            <div class="post">
+                <h2>ВИДЖЕТЫ!</h2>
+                <hr>
+                <h2></h2>
+                <img style="width:auto;height:auto;" src="images/reg_sidebar.png" alt="">
+                <p class="post__content">
+
+                </p>
+                <img style="width:auto;height:auto;" src="images/14.2.png" alt="">
+            </div>
+
+
+            <h1>
+                КОНСПЕКТ ПО ВИДЖЕТАМ 15-20 уроки пропущены!!!!!!!!!!!!!!
+            </h1>
+
+
+            <div class="post">
+                <h2>Работа со страницами</h2>
+                <hr>
+                <h2>Вывод записи в WordPress</h2>
+                <img src="images/20.png" alt="">
+                <p class="post__content">
+                    К тому моменту как wordpress приступит к сборке страницы у него уже, после построения своей системы, будут готовы объекты, переменные и массивы 
+                    в которых хранится контент необходимый для выведения на этой странице. Нам осталось только организовать этот вывод.
+                </p>
+                <p class="post__content">
+                    <b>ЦИКЛ wordpress.</b> Стандартный цикл ВП подразумевает что внутри шаблона ВП сам понимает какой контент нужно вывести. Тоесть при вызове 
+                    ВП знает какую именно запись запросил пользователь. При чем не важно предусмотрена 1 запись или много в любом случае используется цикл.
+                </p>
+                <img src="images/20.1.png" alt="">
+                <p class="post__content">
+                    Если есть записи то работаем с секцией секцией:
+                </p>
+                <img src="images/20.2.png" alt="">
+            </div>
+
+            <div class="post">
+                <h2></h2>
+                <img src="images/21.1.png" alt="">
+                <p class="post__content"><b>the_posts_pagination();</b> - добавляет пагинацию.</p>
+                <p class="post__content">Пагинацию лучше добавлять с помощью <b>the_post_pagination();</b>.
+                    Дело в том что это очень сложный элемент, по этому лучше сделать вёрстку в соответствии с ВП.
+                    или переделать имеющуиеся стили пагинации под ВП в имеющейся вёрстке.
+                </p>
+            </div>
+            <div class="post">
+                <img src="images/22.1.png" alt="">
+                <img src="images/22.2.png" alt="">
+            </div>
+            <div class="post"><img src="images/23.1.png" alt=""></div>
+            <div class="post">
+                <h2>Кастомные таксономии</h2>
+                <img src="images/24.png" alt="">
+            </div>
+
+            <div class="post">
+                <h2>Подключение новой рубрики</h2>
+                <a href="https://developer.wordpress.org/resource/dashicons/#portfolio">
+                    WP icons
+                </a>
+                <img src="images/25.1.png" alt="">
+                <p> <b>'supports'=> ['title']</b> - лучше оставлять всегда, если сохранять посты со своим типом записи без тайтла то они будут сохраняться с тайтлом "без названия". </p>
+                <p>Сейчас создали только с тайтлом т.к. все остальные поля сделаем самостоятельно. Добавим кастомные поля.</p>
+
+                <p>
+                    Зарегистрировали новый тип записи, вывели ссылку на страницу записей в Меню. Появилась ссылка, но она не работат, перекидывает на 404. <br>
+                    Чтобы ссылки на новый тип записей нужно зайти в настройки УРЛ адресов "постянные ссылки" и нажать "сохранить".<br>
+                    Теперь шаблон заработал.
+                </p>
+                <p>
+                    Далее позаполняли немного рубрики, подобавляли их в меню.
+                </p>
+            </div>
+
+
+            <div class="post">
+                <h2>Регистрация таксономий</h2>
+
+
+            </div>
+        </div>
+    </main>
+
+
+</body>
+</html>
+
+
+<code>
+    <pre>
+        function() {
+            document.addEventListener('click', foo);
+        }
+    </pre>
+</code>
