@@ -9,6 +9,7 @@ body {
 .container {
     max-width: 1440px;
     margin: auto;
+    padding: 0  15px;
 }
 h1 {
     margin-bottom: 20px;
